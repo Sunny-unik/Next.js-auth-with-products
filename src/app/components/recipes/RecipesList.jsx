@@ -1,19 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { getRecipes } from "../../../utils/api";
-
-const RecipeList = () => {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      const { data } = await getRecipes();
-      setRecipes(data.recipes);
-    };
-    fetchRecipes();
-  }, []);
-
+const RecipeList = ({ recipes }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {recipes.map((recipe) => (

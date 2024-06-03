@@ -35,14 +35,14 @@ const LoginForm = () => {
         name="username"
         onChange={handleChange}
         placeholder="Username"
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded text-black"
       />
       <input
         type="password"
         name="password"
         onChange={handleChange}
         placeholder="Password"
-        className="w-full p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded text-black"
       />
       <button
         type="submit"
