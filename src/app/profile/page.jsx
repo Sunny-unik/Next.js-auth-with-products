@@ -3,18 +3,26 @@
 import withAuth from "../../utils/auth";
 import { getUser } from "../../utils/api";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { data } = await getUser();
-      console.log({ data });
-      setUser(data);
+      try {
+        const { data } = await getUser();
+        setUser(data);
+      } catch (error) {
+        const data = error.response?.data;
+        if (data.name === "TokenExpiredError") alert(data.message);
+        localStorage.removeItem("token");
+        router.push("/auth/login");
+      }
     };
     fetchUser();
-  }, []);
+  }, [router]);
 
   return (
     <div className="container mx-auto p-4">

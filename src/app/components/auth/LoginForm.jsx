@@ -18,13 +18,11 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login(credentials);
+      const { data } = await login({ ...credentials, expiresInMins: 300 });
       localStorage.setItem("token", data.token);
-      const user = jwtDecode(data.token);
-      // Save user info to state/context if needed
       router.push("/");
     } catch (error) {
-      setError(`Credentials must be username: emilys, password: emilyspass`);
+      setError(`Credentials must be used from https://dummyjson.com/users`);
     }
   };
 
