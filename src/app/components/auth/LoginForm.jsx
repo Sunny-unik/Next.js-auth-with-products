@@ -18,7 +18,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await login(data);
+      const { data } = await login(credentials);
       localStorage.setItem("token", data.token);
       const user = jwtDecode(data.token);
       // Save user info to state/context if needed
