@@ -7,8 +7,7 @@ const Comments = ({ postId }) => {
 
   const fetchComments = async () => {
     const { data } = await getComment(postId);
-    console.log({ data: data });
-    setComments(data.comments);
+    setComments(data);
   };
 
   useEffect(() => {
